@@ -1,0 +1,98 @@
+# --- Q1: For Loop Syntax and range() ---
+print("Q1 (1 to 10):", end=" ")
+for i in range(1, 11):
+    print(i, end=" ")
+print("\nQ1 (Even numbers):", end=" ")
+for i in range(2, 11, 2):
+    print(i, end=" ")
+print()
+
+# --- Q2: While Loop Fundamentals ---
+print("Q2 While (1 to 10):", end=" ")
+i = 1
+while i <= 10:
+    print(i, end=" ")
+    i += 1
+print()
+
+# --- Q3: Sum and Average Using Loop ---
+n = int(input("Q3 Enter how many numbers: "))
+total = 0
+for _ in range(n):
+    val = float(input("Enter number: "))
+    total += val
+print(f"Q3 -> Sum: {total}, Average: {total/n if n > 0 else 0:.2f}")
+
+# --- Q4: Factorial Calculation (For & While) ---
+num = 5
+fact_for = 1
+for i in range(1, num + 1):
+    fact_for *= i
+
+fact_while, temp = 1, num
+while temp > 1:
+    fact_while *= temp
+    temp -= 1
+print(f"Q4 Factorial of {num} -> For: {fact_for}, While: {fact_while}")
+
+# --- Q5: Multiplication Table Generator ---
+t_num = 7
+print(f"Q5 Table of {t_num}:")
+for i in range(1, 11):
+    print(f"{t_num} x {i} = {t_num * i}")
+
+# --- Q6: Number Reversal and Palindrome Check ---
+orig = 121
+temp = orig
+rev = 0
+while temp > 0:
+    rev = (rev * 10) + (temp % 10)
+    temp //= 10
+print(f"Q6 -> Reversed: {rev}, Palindrome: {orig == rev}")
+
+# --- Q7: Count Digits, Even and Odd ---
+d_num = 48291
+tot_d = even_d = odd_d = 0
+while d_num > 0:
+    digit = d_num % 10
+    tot_d += 1
+    if digit % 2 == 0:
+        even_d += 1
+    else:
+        odd_d += 1
+    d_num //= 10
+print(f"Q7 -> Total Digits: {tot_d}, Even: {even_d}, Odd: {odd_d}")
+
+# --- Q8: Optimized Prime Number Checker ---
+p_num = 29
+is_prime = True
+if p_num < 2:
+    is_prime = False
+else:
+    for i in range(2, int(p_num ** 0.5) + 1):
+        if p_num % i == 0:
+            is_prime = False
+            break
+print(f"Q8 -> Is {p_num} Prime? {is_prime}")
+
+# --- Q9: Fibonacci Series ---
+terms = 7
+a, b = 0, 1
+print("Q9 Fibonacci:", end=" ")
+for _ in range(terms):
+    print(a, end=" ")
+    a, b = b, a + b
+print()
+
+# --- Q10: Nested Loops Pattern & Reverse Pattern ---
+print("Q10 Normal Pattern:")
+for i in range(1, 5):
+    for j in range(1, i + 1):
+        print(j, end=" ")
+    print()
+
+print("Q10 Reverse Pattern:")
+for i in range(4, 0, -1):
+    for j in range(1, i + 1):
+        print(j, end=" ")
+    print()
