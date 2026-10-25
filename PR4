@@ -1,98 +1,190 @@
-# --- Q1: For Loop Syntax and range() ---
-print("Q1 (1 to 10):", end=" ")
+# ==========================================================
+# Question 1: Understand for Loop Syntax and range
+# ==========================================================
+print("--- Question 1 ---")
+# Print numbers from 1 to 10
+print("Numbers from 1 to 10:")
 for i in range(1, 11):
-    print(i, end=" ")
-print("\nQ1 (Even numbers):", end=" ")
-for i in range(2, 11, 2):
     print(i, end=" ")
 print()
 
-# --- Q2: While Loop Fundamentals ---
-print("Q2 While (1 to 10):", end=" ")
+# Print only even numbers
+print("Even numbers from 2 to 10:")
+for i in range(2, 11, 2):
+    print(i, end=" ")
+print("\n")
+
+
+# ==========================================================
+# Question 2: While Loop Fundamentals
+# ==========================================================
+print("--- Question 2 ---")
+# Print numbers 1 to 10 using while loop
 i = 1
 while i <= 10:
     print(i, end=" ")
     i += 1
-print()
+print("\n")
 
-# --- Q3: Sum and Average Using Loop ---
-n = int(input("Q3 Enter how many numbers: "))
-total = 0
-for _ in range(n):
-    val = float(input("Enter number: "))
-    total += val
-print(f"Q3 -> Sum: {total}, Average: {total/n if n > 0 else 0:.2f}")
 
-# --- Q4: Factorial Calculation (For & While) ---
-num = 5
+# ==========================================================
+# Question 3: Sum and Average Using Loop
+# ==========================================================
+print("--- Question 3 ---")
+n = int(input("Enter how many numbers you want to input: "))
+total_sum = 0
+
+for i in range(n):
+    val = float(input(f"Enter number {i + 1}: "))
+    total_sum += val
+
+avg = total_sum / n if n > 0 else 0
+
+print(f"Sum    : {total_sum}")
+print(f"Average: {avg:.2f}\n")
+
+
+# ==========================================================
+# Question 4: Factorial Calculation (for and while loops)
+# ==========================================================
+print("--- Question 4 ---")
+num = int(input("Enter a number to find its factorial: "))
+
+# Implementation 1: Using for loop
 fact_for = 1
 for i in range(1, num + 1):
     fact_for *= i
+print(f"Factorial using for loop  : {fact_for}")
 
-fact_while, temp = 1, num
+# Implementation 2: Using while loop
+fact_while = 1
+temp = num
 while temp > 1:
     fact_while *= temp
     temp -= 1
-print(f"Q4 Factorial of {num} -> For: {fact_for}, While: {fact_while}")
+print(f"Factorial using while loop: {fact_while}\n")
 
-# --- Q5: Multiplication Table Generator ---
-t_num = 7
-print(f"Q5 Table of {t_num}:")
+
+# ==========================================================
+# Question 5: Multiplication Table Generator
+# ==========================================================
+print("--- Question 5 ---")
+table_num = int(input("Enter a number for the multiplication table: "))
+
+print(f"\nMultiplication Table of {table_num}:")
 for i in range(1, 11):
-    print(f"{t_num} x {i} = {t_num * i}")
+    print(f"{table_num} x {i:2d} = {table_num * i}")
+print()
 
-# --- Q6: Number Reversal and Palindrome Check ---
-orig = 121
-temp = orig
-rev = 0
+
+# ==========================================================
+# Question 6: Number Reversal and Palindrome Check
+# ==========================================================
+print("--- Question 6 ---")
+num_input = int(input("Enter a number: "))
+original = num_input
+reverse = 0
+
+temp = abs(num_input)
 while temp > 0:
-    rev = (rev * 10) + (temp % 10)
+    digit = temp % 10
+    reverse = (reverse * 10) + digit
     temp //= 10
-print(f"Q6 -> Reversed: {rev}, Palindrome: {orig == rev}")
 
-# --- Q7: Count Digits, Even and Odd ---
-d_num = 48291
-tot_d = even_d = odd_d = 0
-while d_num > 0:
-    digit = d_num % 10
-    tot_d += 1
-    if digit % 2 == 0:
-        even_d += 1
-    else:
-        odd_d += 1
-    d_num //= 10
-print(f"Q7 -> Total Digits: {tot_d}, Even: {even_d}, Odd: {odd_d}")
+if num_input < 0:
+    reverse = -reverse
 
-# --- Q8: Optimized Prime Number Checker ---
-p_num = 29
-is_prime = True
-if p_num < 2:
-    is_prime = False
+print("Reversed Number:", reverse)
+if original == reverse:
+    print("The number is a Palindrome.\n")
 else:
-    for i in range(2, int(p_num ** 0.5) + 1):
-        if p_num % i == 0:
+    print("The number is not a Palindrome.\n")
+
+
+# ==========================================================
+# Question 7: Count Digits, Even and Odd
+# ==========================================================
+print("--- Question 7 ---")
+n = int(input("Enter a number: "))
+temp = abs(n)
+even_count = 0
+odd_count = 0
+
+if temp == 0:
+    even_count = 1
+else:
+    while temp > 0:
+        digit = temp % 10
+        if digit % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+        temp //= 10
+
+total_digits = even_count + odd_count
+print(f"Total digits: {total_digits}")
+print(f"Even digits : {even_count}")
+print(f"Odd digits  : {odd_count}\n")
+
+
+# ==========================================================
+# Question 8: Prime Number Checker
+# ==========================================================
+print("--- Question 8 ---")
+# 1. Check an individual number
+check_num = int(input("Enter a number to check if prime: "))
+if check_num > 1:
+    is_prime = True
+    for i in range(2, int(check_num ** 0.5) + 1):
+        if check_num % i == 0:
             is_prime = False
             break
-print(f"Q8 -> Is {p_num} Prime? {is_prime}")
+    if is_prime:
+        print(f"{check_num} is a Prime number.")
+    else:
+        print(f"{check_num} is not a Prime number.")
+else:
+    print(f"{check_num} is not a Prime number.")
 
-# --- Q9: Fibonacci Series ---
-terms = 7
+# 2. Primes between 1 and 100
+print("\nPrime numbers between 1 and 100:")
+for num in range(2, 101):
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            break
+    else:
+        print(num, end=" ")
+print("\n")
+
+
+# ==========================================================
+# Question 9: Fibonacci Series
+# ==========================================================
+print("--- Question 9 ---")
+terms = int(input("Enter the number of terms: "))
 a, b = 0, 1
-print("Q9 Fibonacci:", end=" ")
+
+print("Fibonacci series:")
 for _ in range(terms):
     print(a, end=" ")
     a, b = b, a + b
-print()
+print("\n")
 
-# --- Q10: Nested Loops Pattern & Reverse Pattern ---
-print("Q10 Normal Pattern:")
-for i in range(1, 5):
+
+# ==========================================================
+# Question 10: Nested Loops (Patterns)
+# ==========================================================
+print("--- Question 10 ---")
+rows = 5
+
+print("Ascending Pattern:")
+for i in range(1, rows + 1):
     for j in range(1, i + 1):
-        print(j, end=" ")
+        print("*", end=" ")
     print()
 
-print("Q10 Reverse Pattern:")
-for i in range(4, 0, -1):
+print("\nReverse Pattern:")
+for i in range(rows, 0, -1):
     for j in range(1, i + 1):
-        print(j, end=" ")
+        print("*", end=" ")
     print()
