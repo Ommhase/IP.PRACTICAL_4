@@ -1,190 +1,110 @@
-# ==========================================================
-# Question 1: Understand for Loop Syntax and range
-# ==========================================================
-print("--- Question 1 ---")
-# Print numbers from 1 to 10
-print("Numbers from 1 to 10:")
-for i in range(1, 11):
-    print(i, end=" ")
-print()
+<!-- ==========================================================
+     PRACTICAL 4: HTML FORMS AND INPUT CONTROLS
+     ========================================================== -->
 
-# Print only even numbers
-print("Even numbers from 2 to 10:")
-for i in range(2, 11, 2):
-    print(i, end=" ")
-print("\n")
-
-
-# ==========================================================
-# Question 2: While Loop Fundamentals
-# ==========================================================
-print("--- Question 2 ---")
-# Print numbers 1 to 10 using while loop
-i = 1
-while i <= 10:
-    print(i, end=" ")
-    i += 1
-print("\n")
+<!-- ==========================================================
+     Question 1: Basic Form
+     ========================================================== -->
+<form action="#" method="post">
+    <label>Technology Name: <input type="text" name="technology" required></label><br><br>
+    <label>Organization: <input type="text" name="organization" required></label><br><br>
+    <label>Email: <input type="email" name="email" required></label><br><br>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+</form>
 
 
-# ==========================================================
-# Question 3: Sum and Average Using Loop
-# ==========================================================
-print("--- Question 3 ---")
-n = int(input("Enter how many numbers you want to input: "))
-total_sum = 0
-
-for i in range(n):
-    val = float(input(f"Enter number {i + 1}: "))
-    total_sum += val
-
-avg = total_sum / n if n > 0 else 0
-
-print(f"Sum    : {total_sum}")
-print(f"Average: {avg:.2f}\n")
+<!-- ==========================================================
+     Question 2: Category Dropdown
+     ========================================================== -->
+<label>Category:
+    <select name="category" required>
+        <option value="">Choose</option>
+        <option value="AI">Artificial Intelligence</option>
+        <option value="Cloud">Cloud Computing</option>
+        <option value="Cyber">Cyber Security</option>
+        <option value="IoT">IoT</option>
+    </select>
+</label>
 
 
-# ==========================================================
-# Question 4: Factorial Calculation (for and while loops)
-# ==========================================================
-print("--- Question 4 ---")
-num = int(input("Enter a number to find its factorial: "))
-
-# Implementation 1: Using for loop
-fact_for = 1
-for i in range(1, num + 1):
-    fact_for *= i
-print(f"Factorial using for loop  : {fact_for}")
-
-# Implementation 2: Using while loop
-fact_while = 1
-temp = num
-while temp > 1:
-    fact_while *= temp
-    temp -= 1
-print(f"Factorial using while loop: {fact_while}\n")
+<!-- ==========================================================
+     Question 3: Radio Buttons
+     ========================================================== -->
+<p>Impact:</p>
+<label><input type="radio" name="impact" value="High" required> High</label>
+<label><input type="radio" name="impact" value="Medium"> Medium</label>
+<label><input type="radio" name="impact" value="Low"> Low</label>
 
 
-# ==========================================================
-# Question 5: Multiplication Table Generator
-# ==========================================================
-print("--- Question 5 ---")
-table_num = int(input("Enter a number for the multiplication table: "))
-
-print(f"\nMultiplication Table of {table_num}:")
-for i in range(1, 11):
-    print(f"{table_num} x {i:2d} = {table_num * i}")
-print()
+<!-- ==========================================================
+     Question 4: Checkboxes
+     ========================================================== -->
+<p>Application areas:</p>
+<label><input type="checkbox" name="areas[]" value="Healthcare"> Healthcare</label>
+<label><input type="checkbox" name="areas[]" value="Education"> Education</label>
+<label><input type="checkbox" name="areas[]" value="Finance"> Finance</label>
 
 
-# ==========================================================
-# Question 6: Number Reversal and Palindrome Check
-# ==========================================================
-print("--- Question 6 ---")
-num_input = int(input("Enter a number: "))
-original = num_input
-reverse = 0
+<!-- ==========================================================
+     Question 5: HTML5 Controls
+     ========================================================== -->
+<label>Contact: <input type="tel" name="contact" pattern="[0-9]{10}" placeholder="10-digit contact"></label><br><br>
+<label>Website: <input type="url" name="website" placeholder="https://example.com"></label><br><br>
+<label>Submission Date: <input type="date" name="submission_date"></label><br><br>
+<label>Year: <input type="number" name="year" min="1900" max="2100"></label><br><br>
+<label>Rating: <input type="range" name="rating" min="1" max="10"></label>
 
-temp = abs(num_input)
-while temp > 0:
-    digit = temp % 10
-    reverse = (reverse * 10) + digit
-    temp //= 10
+==========================================================
+  Whole Combined Code (practical4.html)
+==========================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Suggestion Form</title>
+</head>
+<body>
+    <h1>Technology Suggestion Form</h1>
+    <form action="#" method="post">
+        <label>Technology Name: <input type="text" name="technology" required></label><br><br>
+        <label>Organization: <input type="text" name="organization" required></label><br><br>
+        <label>Email: <input type="email" name="email" required></label><br><br>
 
-if num_input < 0:
-    reverse = -reverse
+        <label>Category:
+            <select name="category" required>
+                <option value="">Choose</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="Cloud">Cloud Computing</option>
+                <option value="Cyber">Cyber Security</option>
+                <option value="IoT">IoT</option>
+                <option value="Blockchain">Blockchain</option>
+            </select>
+        </label><br><br>
 
-print("Reversed Number:", reverse)
-if original == reverse:
-    print("The number is a Palindrome.\n")
-else:
-    print("The number is not a Palindrome.\n")
+        <p>Impact level:</p>
+        <label><input type="radio" name="impact" value="High" required> High</label>
+        <label><input type="radio" name="impact" value="Medium"> Medium</label>
+        <label><input type="radio" name="impact" value="Low"> Low</label><br><br>
 
+        <p>Application areas:</p>
+        <label><input type="checkbox" name="areas[]" value="Healthcare"> Healthcare</label>
+        <label><input type="checkbox" name="areas[]" value="Education"> Education</label>
+        <label><input type="checkbox" name="areas[]" value="Finance"> Finance</label><br><br>
 
-# ==========================================================
-# Question 7: Count Digits, Even and Odd
-# ==========================================================
-print("--- Question 7 ---")
-n = int(input("Enter a number: "))
-temp = abs(n)
-even_count = 0
-odd_count = 0
+        <label>Description:<br>
+            <textarea name="description" rows="4" cols="40"></textarea>
+        </label><br><br>
 
-if temp == 0:
-    even_count = 1
-else:
-    while temp > 0:
-        digit = temp % 10
-        if digit % 2 == 0:
-            even_count += 1
-        else:
-            odd_count += 1
-        temp //= 10
+        <label>Contact: <input type="tel" name="contact" pattern="[0-9]{10}" placeholder="10-digit number" required></label><br><br>
+        <label>Website: <input type="url" name="website" placeholder="https://example.com"></label><br><br>
+        <label>Submission date: <input type="date" name="submission_date"></label><br><br>
+        <label>Year: <input type="number" name="year" min="1900" max="2100"></label><br><br>
+        <label>Rating: <input type="range" name="rating" min="1" max="10"></label><br><br>
 
-total_digits = even_count + odd_count
-print(f"Total digits: {total_digits}")
-print(f"Even digits : {even_count}")
-print(f"Odd digits  : {odd_count}\n")
-
-
-# ==========================================================
-# Question 8: Prime Number Checker
-# ==========================================================
-print("--- Question 8 ---")
-# 1. Check an individual number
-check_num = int(input("Enter a number to check if prime: "))
-if check_num > 1:
-    is_prime = True
-    for i in range(2, int(check_num ** 0.5) + 1):
-        if check_num % i == 0:
-            is_prime = False
-            break
-    if is_prime:
-        print(f"{check_num} is a Prime number.")
-    else:
-        print(f"{check_num} is not a Prime number.")
-else:
-    print(f"{check_num} is not a Prime number.")
-
-# 2. Primes between 1 and 100
-print("\nPrime numbers between 1 and 100:")
-for num in range(2, 101):
-    for i in range(2, int(num ** 0.5) + 1):
-        if num % i == 0:
-            break
-    else:
-        print(num, end=" ")
-print("\n")
-
-
-# ==========================================================
-# Question 9: Fibonacci Series
-# ==========================================================
-print("--- Question 9 ---")
-terms = int(input("Enter the number of terms: "))
-a, b = 0, 1
-
-print("Fibonacci series:")
-for _ in range(terms):
-    print(a, end=" ")
-    a, b = b, a + b
-print("\n")
-
-
-# ==========================================================
-# Question 10: Nested Loops (Patterns)
-# ==========================================================
-print("--- Question 10 ---")
-rows = 5
-
-print("Ascending Pattern:")
-for i in range(1, rows + 1):
-    for j in range(1, i + 1):
-        print("*", end=" ")
-    print()
-
-print("\nReverse Pattern:")
-for i in range(rows, 0, -1):
-    for j in range(1, i + 1):
-        print("*", end=" ")
-    print()
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+</html>
